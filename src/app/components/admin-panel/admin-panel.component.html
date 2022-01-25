@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body >
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar" style="height: 90vh; width: 20vh; float: left;">
+				<div class="p-4 pt-5">
+				<img routerLink="/logged"class="img-responsive" src="assets/images/logo.png" style="width: 100%;">
+	        <ul class="list-unstyled components mb-5">
+	          <li [ngClass]="{'active': isActive('USERS')}">
+	            <a routerLink="/users" (click)="makeActive('USERS')">Manage Users</a>
+	          </li>
+	          <li [ngClass]="{'active': isActive('VISITS')}">
+	            <a routerLink="/visits" (click)="makeActive('VISITS')">Manage Visits</a>
+	          </li>
+	          <li [ngClass]="{'active': isActive('VACCINES')}" >
+                <a routerLink="/vaccines" (click)="makeActive('VACCINES')">Manage Vaccines</a>
+	          </li>
+	          <li [ngClass]="{'active': isActive('FACILITIES')}">
+                <a routerLink="/facilities" (click)="makeActive('FACILITIES')">Manage Facilities</a>
+	          </li>
+	        </ul>
+
+	        <div class="footer">
+	        	<p>Stworzone przez grupę Szefa Adriana</p>
+	        </div>
+
+	      </div>
+    	</nav>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="page-content-fix">
+  <div class="page-fix">
+  <div style="padding-left: 1%; width: 25%; float: left;">
+    <label for="manufacturer" class="col-form-label" style="margin-right: 1%;">Manufacturer: </label>
+    <select ngModel name="manufacturer" id="manufacturer" [formControl]="manufacturer" (ngModelChange)='addParam()'>
+      <option value="" selected>-SELECT-</option>
+      <option value="BIONTECH_PFIZER">Pfizer</option>
+      <option value="JOHNSON_JOHNSON">Johnson</option>
+      <option value="MODERNA">Moderna</option>
+      <option value="ASTRAZENECA">Astra Zeneca</option>
+    </select>
+  </div>
+  <div style="padding-left: 1%;width: 25%; float: left;">
+    <label for="city" class="col-form-label" style="margin-right: 1%;">City: </label>
+    <input ngModel name="city" type="text" id="city" [formControl]="city" (ngModelChange)="addParam()">
+  </div>
+  <div style="padding-left: 1%;width: 20%; float: left;">
+    <label for="fromDate" class="col-form-label" style="margin-right: 1%;">From: </label>
+    <input name="fromDate" type="date" id="fromDate" [formControl]="fromDate" (ngModelChange)="addParam()">
+  </div>
+  <div style="padding-left: 1%;width: 20%; float: left;">
+    <label for="toDate" class="col-form-label" style="margin-right: 1%;">To: </label>
+    <input name="toDate" type="date" id="toDate" [formControl]="toDate" (ngModelChange)="addParam()">
+  </div>
+  <table class="table table-striped">
+      <thead>
+      <tr class="table-dark">
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Vaccine</th>
+        <th scope="col">City</th>
+        <th scope="col">Facility</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let visit of vaccinatioDates; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ visit.visitDate }}</td>
+        <td>{{ visit.visitDateTime}}</td>
+        <td>{{ visit.vaccine.manufacturer}}</td>
+        <td>{{ visit.facility.city}}</td>
+        <td>{{ visit.facility.name}}</td>
+      <td>
+          <button class="btn btn-primary" mat-raised-button (click)="registerUser(visit.id)">Register</button>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+    <mat-paginator
+    [length]="this.max_items"
+    [pageSize]="this.size"
+    [pageSizeOptions]="[5,10,25,100]"
+    (page)="pageEvent = $event; onPaginateChange($event)"
+    showFirstLastButtons>
+    </mat-paginator>
+  </div>
+  <app-footer></app-footer>
+
+    <!-- <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshvisits()">
+      </ngb-pagination>
+
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>
+    </div> -->
+</div>

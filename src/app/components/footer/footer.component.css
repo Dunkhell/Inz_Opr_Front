@@ -1,0 +1,6 @@
+div{
+  background-color: lightgrey;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}

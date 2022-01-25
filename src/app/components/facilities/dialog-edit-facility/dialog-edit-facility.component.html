@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Edit Facility</h2>
+<mat-dialog-content>
+    <form [formGroup]="editFacilityFormGroup " (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name: </label>
+        <input class="form-control" ngModel="{{editFacility?.name}}" id="name" type="text" formControlName="name" required>
+    </div>
+    <div class="form-group">
+        <label for="contactPhone">Phone: </label>
+        <input class="form-control" ngModel="{{editFacility?.contactPhone}}" id="contactPhone" type="text" formControlName="contactPhone" required>
+    </div>
+    <div class="form-group">
+        <label for="country">Country: </label>
+        <input class="form-control" ngModel="{{editFacility?.country}}" id="country" type="text" formControlName="country" required>
+    </div>
+    <div class="form-group">
+        <label for="city">City: </label>
+        <input class="form-control" ngModel="{{editFacility?.city}}" id="city" type="text" formControlName="city" required>
+    </div>
+    <div class="form-group">
+        <label for="street">Street: </label>
+        <input class="form-control" ngModel="{{editFacility?.street}}" id="street" type="text" formControlName="street" required>
+    </div>
+        <button class="btn btn-primary" style="margin-right: 10px;" type="submit" [disabled]="!editFacilityFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+        
+        </form>
+</mat-dialog-content>

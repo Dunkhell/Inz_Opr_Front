@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <app-header></app-header>
+      <div id="panel-fix" class="wrapper d-flex align-items-stretch">
+        <app-admin-panel></app-admin-panel>
+
+          <!-- Page Content  -->
+          <div id="content-fix">
+            <div class="page-admin-fix">
+			<button class="btn btn-primary" style="margin-right: 10px;" data-placement="top" data-toggle="modal" (click)="openDialog()" >Add new Visit</button>
+			<button class="btn btn-primary" style="margin-right: 10px;" mat-raised-button (click)="addManyVisits()">Add many visits</button>
+			<button class="btn btn-primary" mat-raised-button (click)="deleteOldAndUnusedVisits()">Delete Old And Unused Visits</button>
+
+            <table class="table table-striped">
+				<thead>
+				<tr class="table-dark">
+				  <th scope="col">ID</th>
+				  <th scope="col">Date</th>
+				  <th scope="col">Time</th>
+				  <th scope="col">Vaccine</th>
+				  <th scope="col">Facility</th>
+				  <th scope="col">TookPlace</th>
+				  <th scope="col">User</th>
+				  <th scope="col">Operations</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr *ngFor="let visit of visits">
+				  <th scope="row">{{ visit.id }}</th>
+				  <td>{{ visit.visitDate }}</td>
+				  <td>{{ visit.visitDateTime}}</td>
+				  <td>{{ visit.vaccine.manufacturer}}</td>
+				  <td>{{ visit.facility.name}}</td>
+				  <td>{{ visit.tookPlace }}</td>
+				  <td>{{ visit.userDetails?.firstName }}</td>
+				<td>
+					<button class="btn btn-primary" data-placement="top" data-toggle="modal" style="margin-right: 10px;" (click)="openDialogEdit(visit.id)">Edit</button>
+					<button class="btn btn-primary" style="margin-right: 10px;" *ngIf="visit.userDetails != null && !visit.tookPlace" mat-raised-button (click)="confirmVisitById(visit.id)">Confirm</button>
+					<button class="btn btn-danger" mat-raised-button (click)="openDialogDelete(visit.id)">Delete</button>
+				</td>
+				</tr>
+				</tbody>
+				<!-- <div class="container-fluid ">
+					<ul class="pagination">
+					  <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
+					  <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+					</ul>
+				</div> -->
+			  </table>
+			  <mat-paginator
+				[length]="this.max_items"
+				[pageSize]="this.size"
+				[pageSizeOptions]="[5,10,25,100]"
+				(page)="pageEvent = $event; onPaginateChange($event)"
+				showFirstLastButtons>
+    			</mat-paginator>
+        </div>
+        <app-footer></app-footer>
+
+        </div>
+	</div>
+  </body>
+</html>

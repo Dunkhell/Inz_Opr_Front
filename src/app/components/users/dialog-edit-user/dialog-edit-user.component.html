@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Edit User</h2>
+<mat-dialog-content>
+    <form [formGroup]="editUserFormGroup " (ngSubmit)="onSubmit()">
+        <h2>User details</h2>
+        <div class="form-group">
+        <label for="firstName">First Name: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.firstName}}" id="firstName" type="text" formControlName="firstName" required>
+        </div>
+        <div class="form-group">
+        <label for="lastName">Last Name: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.lastName}}" id="lastName" type="text" formControlName="lastName" required>
+        </div>
+        <div class="form-group">
+        <label for="otherNames">Other Names: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.otherNames}}" id="otherNames" type="text" formControlName="otherNames" required>
+        </div>
+        <div class="form-group">
+        <label for="dateOfBirth">DateOfBirth: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.dateOfBirth}}" id="dateOfBirth" type="date" formControlName="dateOfBirth" required>
+        </div>
+        <div class="form-group">
+        <label for="contactPhone">Street: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.contactPhone}}" id="contactPhone" type="text" formControlName="contactPhone" required>
+        </div>
+        <div class="form-group">
+        <label for="country">Street: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.country}}" id="country" type="text" formControlName="country" required>
+        </div>
+        <div class="form-group">
+        <label for="city">Street: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.city}}" id="city" type="text" formControlName="city" required>
+        </div>
+        <div class="form-group">
+        <label for="street">Street: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.street}}" id="street" type="text" formControlName="street" required>
+        </div>
+        <div class="form-group">
+        <label for="gender">Gender: </label>
+        <input class="form-control" ngModel="{{editUser?.userDetailsDTO?.gender}}" id="gender" type="text" formControlName="gender" required>
+        </div>
+
+        <button class="btn btn-primary" style="margin-right: 10px;" type="submit" [disabled]="!editUserFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+        </form>
+</mat-dialog-content>
+

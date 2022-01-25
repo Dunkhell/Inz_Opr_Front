@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Delete Visit</h2>
+<mat-dialog-content>
+    <form [formGroup]="deleteVisitFormGroup " (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <p>Do you want to delete visit {{data.id}}</p>
+    </div>
+        <button style="margin-right: 10px;" class="btn btn-primary" type="submit">Confirm</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+        </form>
+</mat-dialog-content>

@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Add Visit</h2>
+<mat-dialog-content>
+    <form [formGroup]="addVisitFormGroup " (ngSubmit)="onSubmit()">
+        <h2>Visit details</h2>
+        <div class="form-group">
+            <label for="visitDate">Date: </label>
+            <input class="form-control" id="visitDate" type="date" formControlName="visitDate" required>
+        </div>
+        <div class="form-group">
+            <label for="visitDateTime">Time: </label>
+            <input class="form-control" id="visitDateTime" type="time" formControlName="visitDateTime" required>
+        </div>
+        <div class="form-group">
+            <label for="facility_id">Facility ID: </label>
+            <input class="form-control" id="facility_id" type="text" formControlName="facility_id" placeholder="Facility ID..." required>
+        </div>
+        <div class="form-group">
+            <label for="vaccine_id">Vaccine ID: </label>
+            <input class="form-control" id="vaccine_id" type="text" formControlName="vaccine_id" placeholder="Vaccine ID..." required>
+        </div>
+        <button class="btn btn-primary" style="margin-right: 10px;" type="submit" [disabled]="!addVisitFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+        </form>
+</mat-dialog-content>

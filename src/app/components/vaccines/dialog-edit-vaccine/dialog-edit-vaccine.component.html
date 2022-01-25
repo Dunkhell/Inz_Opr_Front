@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit Vaccine</h2>
+<mat-dialog-content>
+    <form [formGroup]="editVaccineFormGroup " (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="manufacturer">Manufacturer: </label>
+        <input class="form-control" ngModel="{{editVaccine?.manufacturer}}" id="manufacturer" type="text" formControlName="manufacturer" required>
+    </div>
+    <div class="form-group">
+        <label for="name">Name: </label>
+        <input class="form-control" ngModel="{{editVaccine?.name}}" id="name" type="text" formControlName="name" required>
+    </div>
+    <div class="form-group">
+        <label for="vaccineDose">VaccineDose: </label>
+        <input class="form-control" ngModel="{{editVaccine?.vaccineDose}}" id="vaccineDose" type="text" formControlName="vaccineDose" required>
+    </div>
+    <div class="form-group">
+        <label for="expirationDate">ExpirationDate: </label>
+        <input class="form-control" ngModel="{{editVaccine?.expirationDate}}" id="expirationDate" type="date" formControlName="expirationDate" required>
+    </div>
+        <button style="margin-right: 10px;" class="btn btn-primary" type="submit" [disabled]="!editVaccineFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+        </form>
+</mat-dialog-content>

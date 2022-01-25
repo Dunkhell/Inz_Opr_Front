@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Edit Visit</h2>
+<mat-dialog-content>
+    <form [formGroup]="editVisitsFormGroup " (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="visitDate">VisitDate: </label>
+        <input class="form-control" ngModel="{{editVisit?.visitDate}}" id="visitDate" type="date" formControlName="visitDate" required>
+    </div>
+    <div class="form-group">
+        <label for="visitDateTime">Time: </label>
+        <input class="form-control" ngModel="{{editVisit?.visitDateTime}}" id="visitDateTime" type="time" formControlName="visitDateTime" required>
+    </div>
+    <div formGroupName="facility">
+            <div class="form-group">
+                <label for="id">Facility ID: </label>
+                <input class="form-control" ngModel="{{editVisit?.facility?.id}}" id="id" class="form-control" type="text" formControlName="id">    
+            </div>
+    </div>
+    <div formGroupName="vaccine">
+        <div class="form-group">
+            <label for="id">Vaccine ID: </label>
+            <input class="form-control" ngModel="{{editVisit?.vaccine?.id}}" id="id" class="form-control" type="text" formControlName="id">    
+        </div>
+</div>
+        <button class="btn btn-primary" style="margin-right: 10px;" type="submit" [disabled]="!editVisitsFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+        </form>
+</mat-dialog-content>

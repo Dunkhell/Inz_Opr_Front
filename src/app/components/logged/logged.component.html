@@ -1,0 +1,230 @@
+<html>
+<meta name="referrer" content="no-referrer"/>
+  <body>
+    <app-header></app-header>
+    <div class="container emp-profile">
+      <form method="post">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="profile-img">
+                      <img [src]="this.photoUrl || this.defaultImage" class="img-thumbnail" alt="profile picture"/>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="profile-head">
+                              <h5>
+                                  {{user?.userDetailsDTO?.firstName}} {{user?.userDetailsDTO?.lastName}}
+                              </h5>
+                              <h6>
+                                {{user?.applicationUserRole}}
+                              </h6>
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col" ><button class="btn btn-primary" data-placement="top" data-toggle="modal" data-target="#updateProfileModal" data-original-title="Edit" (click)="this.editUser = user.userDetailsDTO">Edit Profile</button></div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="profile-work">
+                      <p></p>
+                      <a href=""></a><br/>
+                      <a href=""></a><br/>
+                      <a href=""></a>
+                      <p></p>
+                      <a href=""></a><br/>
+                      <a href=""></a><br/>
+                      <a href=""></a><br/>
+                      <a href=""></a><br/>
+                      <a href=""></a><br/>
+                  </div>
+              </div>
+              <div class="col-md-8">
+                  <div class="tab-content profile-tab" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>User Id</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>{{user?.id}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Name</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>{{user?.userDetailsDTO?.firstName}} {{user?.userDetailsDTO?.lastName}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Email</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>{{user?.email}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Phone</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>{{user?.userDetailsDTO?.contactPhone}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Vaccination</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>{{user?.userDetailsDTO?.isVaccinated}}</p>
+                                      </div>
+                                  </div>
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Experience</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>Expert</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Hourly Rate</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>10$/hr</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Total Projects</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>230</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>English Level</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>Expert</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <label>Availability</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p>6 months</p>
+                                      </div>
+                                  </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label>Your Bio</label><br/>
+                                  <p>Your detail description</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+
+
+      <table class="table table-striped">
+        <thead>
+        <tr class="table-dark">
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Vaccine</th>
+          <th scope="col">Facility</th>
+          <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody class="scroable">
+        <tr *ngFor="let visit of userVisits; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ visit.visitDate }}</td>
+          <td>{{ visit.visitDateTime}}</td>
+          <td>{{ visit.vaccine.manufacturer}}</td>
+          <td>{{ visit.facility.name}}</td>
+        <td>
+            <button *ngIf="!visit.tookPlace" class="btn btn-primary" mat-raised-button (click)="cancelVisit(visit.id)">Cancel Visit</button>
+        </td>
+        </tr>
+        </tbody>
+      </table>
+
+    <!-- Modal Edit -->
+    <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Your Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form #updateForm="ngForm" >
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">First name:</label>
+                  <input ngModel="{{editUser?.firstName}}" name="firstName" type="text" id="userDetails-firstName" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Last name:</label>
+                  <input ngModel="{{editUser?.lastName}}" name="lastName" type="text" id="userDetails-lastName" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Other names:</label>
+                  <input ngModel="{{editUser?.otherNames}}" name="otherNames" type="text" id="userDetails-otherNames" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Date of birth:</label>
+                  <input ngModel="{{editUser?.dateOfBirth}}" name="dateOfBirth" type="date" id="userDetails-dateOfBirth" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Contact phone:</label>
+                  <input ngModel="{{editUser?.contactPhone}}" name="contactPhone" type="text" id="userDetails-contactPhone" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Country:</label>
+                  <input ngModel="{{editUser?.country}}" name="country" type="text" id="userDetails-country" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">City:</label>
+                  <input ngModel="{{editUser?.city}}" name="city" type="text" id="userDetails-city" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Street:</label>
+                  <input ngModel="{{editUser?.street}}" name="street" type="text" id="userDetails-street" style="float: right;width:75%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Gender:</label>
+                  <input ngModel="{{editUser?.gender}}" name="gender" type="text" id="userDetails-gender" style="float: right;width:75%;" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="update-user-form" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button [disabled]="updateForm.invalid" (click)="updateProfile(updateForm.value)" type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer></app-footer>
+  </body>
+</html>

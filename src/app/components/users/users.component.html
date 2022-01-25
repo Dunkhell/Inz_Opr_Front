@@ -1,0 +1,59 @@
+<!doctype html>
+  <html lang="en">
+    <head>
+      <title>Sidebar 01</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+      <app-header></app-header>
+      <div id="panel-fix" class="wrapper d-flex align-items-stretch">
+        <app-admin-panel></app-admin-panel>
+
+          <!-- Page Content  -->
+          <div id="content-fix">
+            <div class="page-admin-fix">
+
+            <table class="table table-striped">
+              <thead>
+              <tr class="table-dark">
+                <th scope="col" >ID</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LasttName</th>
+                <th scope="col">Role</th>
+                <th scope="col">Email</th>
+                <th scope="col">Vaccinated</th>
+                <th scope="col">Operations</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let user of users">
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user?.userDetailsDTO?.firstName }}</td>
+                <td>{{ user?.userDetailsDTO?.lastName }}</td>
+                <td>{{ user?.applicationUserRole }}</td>
+                <td>{{ user?.email}}</td>
+                <td>{{ user?.userDetailsDTO?.isVaccinated}}</td>
+              <td>
+                <button class="btn btn-primary" data-placement="top" data-toggle="modal" (click)="openDialogEdit(user.id)">Edit</button>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              <mat-paginator
+                [length]="this.max_items"
+                [pageSize]="this.size"
+                [pageSizeOptions]="[5,10,25,100]"
+                (page)="pageEvent = $event; onPaginateChange($event)"
+                showFirstLastButtons>
+              </mat-paginator>
+              </div>
+              <app-footer></app-footer>
+          </div>
+    </div>
+    </body>
+  </html>

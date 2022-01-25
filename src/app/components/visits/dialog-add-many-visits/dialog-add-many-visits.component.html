@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Add many visits</h2>
+<mat-dialog-content>
+    <form [formGroup]="batchVisitFormGroup " (ngSubmit)="onSubmit()">
+        <h2>Visit details</h2>
+        <div class="form-group">
+            <label for="facility_id">Facility id: </label>
+            <input id="facility_id" class="form-control" type="text" formControlName="facility_id" placeholder="Facility...">
+        </div>
+        <div class="form-group">
+            <label for="vaccine_id">Vaccine id: </label>
+            <input id="vaccine_id" class="form-control" type="text" formControlName="vaccine_id" placeholder="Vaccine...">
+        </div>
+        <div formGroupName="visitInfo">
+            <h2>Basic information</h2>
+            <div class="form-group">
+                <label for="day">Day of visits: </label>
+                <input id="day" class="form-control" type="date" formControlName="day">    
+            </div>
+            
+            <div class="form-group">
+                <label for="timeStart">Starting hour: </label>
+                <input id="timeStart" class="form-control" type="time" formControlName="start">    
+            </div>
+            
+            <div class="form-group">
+                <label for="timeEnd">Ending hour: </label>
+                <input id="timeEnd" class="form-control" type="time" formControlName="end">
+            </div>
+           
+            <div class="form-group">
+                <label for="interval">Intervals between visits: </label>
+                <input id="interval" class="form-control" type="text" formControlName="interval" placeholder="Minutes between visits...">
+            </div>
+        </div>
+        <button class="btn btn-primary" style="margin-right: 10px;" type="submit" [disabled]="!batchVisitFormGroup.valid">Submit</button>
+        <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+        </form>
+</mat-dialog-content>
